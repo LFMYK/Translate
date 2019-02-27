@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">test</string>
+    <string-array name="planets_from">
+        <item>自动</item>
+        <item>中文</item>
+        <item>英语</item>
+        <item>日语</item>
+        <item>韩语</item>
+        <item>德语</item>
+        <item>西班牙语</item>
+        <item>法语</item>
+    </string-array>
+
+    <string-array name="planets_to">
+        <item>自动</item>
+        <item>中文</item>
+        <item>英语</item>
+        <item>日语</item>
+        <item>韩语</item>
+        <item>德语</item>
+        <item>西班牙语</item>
+        <item>法语</item>
+    </string-array>
+</resources>
