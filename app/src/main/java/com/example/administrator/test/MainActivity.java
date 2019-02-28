@@ -1,6 +1,4 @@
 package com.example.administrator.test;
-
-
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Switch;
-
 import okhttp3.FormBody;
 
 
@@ -26,18 +21,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG="MainActivity";
-    private EditText editText_original_text;
-    private EditText editText_translation_result;
-    private Button button_translate;
+    private EditText editTextOriginalText;
+    private EditText editTextTranslationResult;
+    private Button buttonTranslate;
 
     private String phEnMp3Url="";
     private String phAmMp3Url="";
-    private Button button_phEnMp3;
-    private Button button_phAmMp3;
+    private Button buttonPhEnMp3;
+    private Button buttonPhAmMp3;
 
     private MediaPlayer mediaPlayer; // 媒体播放器
 
-    private Spinner spinner_from;
+    private Spinner spinnerFrom;
     public String stringSelectFrom="auto";
     private Spinner spinner_to;
     public String stringSelectTo="auto";
@@ -46,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editText_original_text=findViewById(R.id.editText_original_text);
-        editText_translation_result=findViewById(R.id.editText_translation_result);
-        button_translate=findViewById(R.id.button_translate);
+        editTextOriginalText=findViewById(R.id.editText_original_text);
+        editTextTranslationResult=findViewById(R.id.editText_translation_result);
+        buttonTranslate=findViewById(R.id.button_translate);
 
-        button_phEnMp3=findViewById(R.id.button_phEnMp3);
-        button_phAmMp3=findViewById(R.id.button_phAmMp3);
+        buttonPhEnMp3=findViewById(R.id.button_phEnMp3);
+        buttonPhAmMp3=findViewById(R.id.button_phAmMp3);
 
         mediaPlayer = new MediaPlayer();
         try {
@@ -61,20 +56,20 @@ public class MainActivity extends AppCompatActivity {
         }
         //mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);// 设置媒体流类型
 
-        spinner_from=findViewById(R.id.spinner_from);
+        spinnerFrom=findViewById(R.id.spinner_from);
 
 
         ArrayAdapter adapterFrom = ArrayAdapter.createFromResource(MainActivity.this,R.array.planets_from,android.R.layout.simple_spinner_dropdown_item );
         adapterFrom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_from.setAdapter(adapterFrom);
+        spinnerFrom.setAdapter(adapterFrom);
 
 
-        //System.out.println(spinner_from.getSelectedItem());
+        //System.out.println(spinnerFrom.getSelectedItem());
 
-        spinner_from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent,View view,int position,long id) {
-                stringSelectFrom=getCode((String)spinner_from.getSelectedItem());
+                stringSelectFrom=getCode((String)spinnerFrom.getSelectedItem());
                 Log.d(TAG,"原文语言编码："+stringSelectFrom);
             }
 
@@ -104,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        button_phEnMp3.setOnClickListener(new View.OnClickListener() {
+        buttonPhEnMp3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -187,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
-        button_translate.setOnClickListener(new View.OnClickListener() {
+        buttonTranslate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 request();
@@ -224,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         GetRequest_Interface request = retrofit.create(GetRequest_Interface.class);
 
         //对 发送请求 进行封装
-        Call<Translation> call = request.getCall(this.stringSelectFrom,this.stringSelectTo,editText_original_text.getText().toString());//editText_original_text.getText().toString()
+        Call<Translation> call = request.getCall(this.stringSelectFrom,this.stringSelectTo,editTextOriginalText.getText().toString());//editTextOriginalText.getText().toString()
 
         Log.d(TAG,"查看URL：");
         Log.d(TAG,call.request().url().toString());
@@ -255,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             if (string != null)
-                                editText_translation_result.setText(string);
+                                editTextTranslationResult.setText(string);
                         }
                     });
             }

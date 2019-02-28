@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">test</string>
+    <string name="app_name">翻译</string>
     <string-array name="planets_from">
         <item>自动</item>
         <item>中文</item>

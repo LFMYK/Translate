@@ -17,11 +17,11 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="58dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textColor="#ff0000ff"
-            android:text="==》" />
+            android:background="@mipmap/pointing_right" />
 
         <Spinner
             android:id="@+id/spinner_to"
@@ -56,18 +56,27 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editText_original_text"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:inputType="textMultiLine"
-        android:hint="翻译你要查询的单词..."
-        android:gravity="top"
-        android:text="Hello" />
+        <EditText
+            android:id="@+id/editText_original_text"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EDEDED"
+            android:gravity="top"
+            android:hint="翻译你要查询的单词..."
+            android:inputType="textMultiLine"
+            android:layout_marginRight="1dp"
+            android:text="Hello" />
+
+
+
+
+
 
         <EditText
             android:id="@+id/editText_translation_result"
@@ -75,6 +84,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="top"
+            android:background="@color/colorMy"
+            android:layout_marginLeft="1dp"
             android:inputType="textMultiLine" />
 
     </LinearLayout>
